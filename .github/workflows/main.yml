@@ -1,0 +1,33 @@
+name: Netlify Deploy
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.5.0
+        with:
+          node-version: 16.x
+
+      - name: Build site
+        run: |
+          yarn install --production
+          yarn build
+      
+      - name: Netlify deployment
+        uses: nwtgck/actions-netlify@v1.2.2
+        with:
+          publish-dir: './public'
+          production-branch: main
+          deploy-message: '{{ github.event.head_commit.message }}'
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
