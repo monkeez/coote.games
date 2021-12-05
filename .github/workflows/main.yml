@@ -21,6 +21,8 @@ jobs:
         run: |
           yarn install --production
           yarn build
+        env:
+          ITCHIO_API_KEY: ${{ secrets.ITCHIO_API_KEY }}
       
       - name: Netlify deployment
         uses: nwtgck/actions-netlify@v1.2.2
