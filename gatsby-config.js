@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `Games by Mitch Coote`,
@@ -34,7 +38,7 @@ module.exports = {
     {
       resolve: "gatsby-source-itchio",
       options: {
-        key: "pjGL6ejkOs04b7eQ0HQZgXdX3cGV318NLkjqmseG"
+        key: process.env.ITCHIO_API_KEY,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
