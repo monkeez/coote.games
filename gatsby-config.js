@@ -1,9 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
-    siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
+    title: `Games by Mitch Coote`,
+    description: `Games created by Mitch Coote.`,
+    author: `@mitchcoote`,
+    siteUrl: `https://coote.games/`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -28,7 +28,13 @@ module.exports = {
         // https://css-tricks.com/meta-theme-color-and-trickery/
         // theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/coote-icon.png`, // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: "gatsby-source-itchio",
+      options: {
+        key: "pjGL6ejkOs04b7eQ0HQZgXdX3cGV318NLkjqmseG"
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
